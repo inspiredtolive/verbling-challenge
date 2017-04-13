@@ -3,7 +3,7 @@ import React from 'react';
 export default class App extends React.Component {
 
   render() {
-    return <div>Start here!</div>;
+    return <h1>Verbling Challenge</h1>;
   }
 
 }
