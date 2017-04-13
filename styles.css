@@ -6,3 +6,11 @@ body {
 h1 {
   text-align: center;
 }
+
+.app {
+  text-align: center;
+}
+
+.searchBar {
+  width: 400px;
+}
