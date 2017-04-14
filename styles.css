@@ -23,3 +23,12 @@ h1 {
   box-sizing: border-box;
   overflow-y: auto;
 }
+
+.item {
+  text-align: left;
+  padding: 5px 10px;
+}
+
+.itemCollapse {
+  height: 50px;
+}
