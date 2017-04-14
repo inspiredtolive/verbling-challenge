@@ -24,9 +24,19 @@ h1 {
   overflow-y: auto;
 }
 
+.itemArea .item:nth-child(odd) {
+  background: #f0f0f2;
+}
+
+.itemArea .item:hover {
+  background: #dadadc;
+}
+
 .item {
   text-align: left;
-  padding: 5px 10px;
+  padding: 6px 0 6px 6px;
+  cursor: pointer;
+  min-height: 50px;
 }
 
 .itemCollapse {
