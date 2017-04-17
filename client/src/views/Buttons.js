@@ -12,12 +12,19 @@ export default function Buttons ({store}) {
   const toggleAll = () => {
     store.dispatch({ type: 'TOGGLE_ALL'});
   };
+
+  const addItem = () => {
+    let text = window.prompt('Add item');
+    if (text) {
+      store.dispatch({ type: 'ADD_ITEM', text });
+    }
+  };
   return (
     <div className='buttons'>
       <button onClick={expandAll}>Expand all</button>
       <button onClick={collapseAll}>Collapse all</button>
       <button onClick={toggleAll}>Toggle all</button>
-      <button>Add</button>
+      <button onClick={addItem}>Add</button>
     </div>
   );
 }

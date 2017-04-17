@@ -38,6 +38,9 @@ export default function (state = exampleItems, action) {
         item.isCollapse = !item.isCollapse;
         return item;
       });
+    case 'ADD_ITEM':
+      newState.push({ text: action.text, isCollapse: true });
+      return newState;
     default:
       return state;
   }
