@@ -1,24 +1,17 @@
 import React from 'react';
 
-export default class Item extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+export default function Item ({store, index, text, isCollapse}) {
+  const toggleCollapse = () => {
+    store.dispatch({ type: 'TOGGLE_COLLAPSE', index });
+  };
 
-  toggleCollapse () {
-    this.props.store.dispatch({ type: 'TOGGLE_COLLAPSE', index: this.props.index });
-  }
+  const collapseText = () => {
+    return (text.length < 67) ? text : text.substr(0, 64).trim().concat('...');
+  };
 
-  collapseText() {
-    return (this.props.text.length < 67) ? this.props.text : this.props.text.substr(0, 64).trim().concat('...');
+  if (isCollapse) {
+    return <div className='item itemCollapse' onClick={toggleCollapse}>{collapseText()}</div>;
+  } else {
+    return <div className='item' onClick={toggleCollapse}>{text}</div>;
   }
-
-  render() {
-    if (this.props.isCollapse) {
-      return <div className='item itemCollapse' onClick={this.toggleCollapse.bind(this)}>{this.collapseText()}</div>;
-    } else {
-      return <div className='item' onClick={this.toggleCollapse.bind(this)}>{this.props.text}</div>;
-    }
-  }
-
 }
