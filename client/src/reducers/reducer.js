@@ -17,29 +17,37 @@ const exampleItems = [
     isCollapse: true },
 ];
 
-export default function (state = exampleItems, action) {
+export default function (state = {items: exampleItems, filter: ''}, action) {
+  // reducers must be pure functions meaning that we should not modify any arguments
   let newState = JSON.parse(JSON.stringify(state));
+
   switch (action.type) {
     case 'TOGGLE_COLLAPSE':
-      newState[action.index].isCollapse = !newState[action.index].isCollapse;
+      newState.items[action.index].isCollapse = !newState.items[action.index].isCollapse;
       return newState;
     case 'EXPAND_ALL':
-      return newState.map((item) => {
+      newState.items = newState.items.map((item) => {
         item.isCollapse = false;
         return item;
       });
+      return newState;
     case 'COLLAPSE_ALL':
-      return newState.map((item) => {
+      newState.items = newState.items.map((item) => {
         item.isCollapse = true;
         return item;
       });
+      return newState;
     case 'TOGGLE_ALL':
-      return newState.map((item) => {
+      newState.items = newState.items.map((item) => {
         item.isCollapse = !item.isCollapse;
         return item;
       });
+      return newState;
     case 'ADD_ITEM':
-      newState.push({ text: action.text, isCollapse: true });
+      newState.items.push({ text: action.text, isCollapse: true });
+      return newState;
+    case 'CHANGE_FILTER':
+      newState.filter = action.filter;
       return newState;
     default:
       return state;
