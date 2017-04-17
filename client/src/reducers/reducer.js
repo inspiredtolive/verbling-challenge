@@ -20,7 +20,7 @@ const exampleItems = [
 export default function (state = exampleItems, action) {
   switch (action.type) {
     case 'TOGGLE_COLLAPSE':
-      let newState = [...state];
+      let newState = JSON.parse(JSON.stringify(state));
       newState[action.index].isCollapse = !newState[action.index].isCollapse;
       return newState;
     default:
