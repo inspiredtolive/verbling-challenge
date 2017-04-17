@@ -22,33 +22,40 @@ export default function (state = {items: exampleItems, filter: ''}, action) {
   let newState = JSON.parse(JSON.stringify(state));
 
   switch (action.type) {
+
     case 'TOGGLE_COLLAPSE':
       newState.items[action.index].isCollapse = !newState.items[action.index].isCollapse;
       return newState;
+
     case 'EXPAND_ALL':
       newState.items = newState.items.map((item) => {
         item.isCollapse = false;
         return item;
       });
       return newState;
+
     case 'COLLAPSE_ALL':
       newState.items = newState.items.map((item) => {
         item.isCollapse = true;
         return item;
       });
       return newState;
+
     case 'TOGGLE_ALL':
       newState.items = newState.items.map((item) => {
         item.isCollapse = !item.isCollapse;
         return item;
       });
       return newState;
+
     case 'ADD_ITEM':
       newState.items.push({ text: action.text, isCollapse: true });
       return newState;
+
     case 'CHANGE_FILTER':
       newState.filter = action.filter;
       return newState;
+      
     default:
       return state;
   }
