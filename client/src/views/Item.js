@@ -3,21 +3,21 @@ import React from 'react';
 export default class Item extends React.Component {
   constructor(props) {
     super(props);
-    this.collapseText = (props.body.length < 67) ? props.body : props.body.substr(0, 64).trim().concat('...'),
-    this.state = {
-      isCollapse: true,
-    };
   }
 
   toggleCollapse () {
-    this.setState({isCollapse: !this.state.isCollapse});
+    this.props.store.dispatch({ type: 'TOGGLE_COLLAPSE', index: this.props.index });
+  }
+
+  collapseText() {
+    return (this.props.text.length < 67) ? this.props.text : this.props.text.substr(0, 64).trim().concat('...');
   }
 
   render() {
-    if (this.state.isCollapse) {
-      return <div className='item itemCollapse' onClick={this.toggleCollapse.bind(this)}>{this.collapseText}</div>;
+    if (this.props.isCollapse) {
+      return <div className='item itemCollapse' onClick={this.toggleCollapse.bind(this)}>{this.collapseText()}</div>;
     } else {
-      return <div className='item' onClick={this.toggleCollapse.bind(this)}>{this.props.body}</div>;
+      return <div className='item' onClick={this.toggleCollapse.bind(this)}>{this.props.text}</div>;
     }
   }
 
