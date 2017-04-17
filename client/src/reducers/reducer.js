@@ -18,15 +18,19 @@ const exampleItems = [
 ];
 
 export default function (state = exampleItems, action) {
+  let newState = JSON.parse(JSON.stringify(state));
   switch (action.type) {
     case 'TOGGLE_COLLAPSE':
-      var newState = JSON.parse(JSON.stringify(state));
       newState[action.index].isCollapse = !newState[action.index].isCollapse;
       return newState;
     case 'EXPAND_ALL':
-      var newState = JSON.parse(JSON.stringify(state));
       return newState.map((item) => {
         item.isCollapse = false;
+        return item;
+      });
+    case 'COLLAPSE_ALL':
+      return newState.map((item) => {
+        item.isCollapse = true;
         return item;
       });
     default:
