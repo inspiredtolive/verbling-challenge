@@ -37,6 +37,7 @@ h1 {
   padding: 6px 0 6px 6px;
   cursor: pointer;
   min-height: 50px;
+  box-sizing: border-box;
 }
 
 .itemCollapse {
