@@ -33,6 +33,11 @@ export default function (state = exampleItems, action) {
         item.isCollapse = true;
         return item;
       });
+    case 'TOGGLE_ALL':
+      return newState.map((item) => {
+        item.isCollapse = !item.isCollapse;
+        return item;
+      });
     default:
       return state;
   }

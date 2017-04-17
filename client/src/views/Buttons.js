@@ -8,11 +8,15 @@ export default function Buttons ({store}) {
   const collapseAll = () => {
     store.dispatch({ type: 'COLLAPSE_ALL'});
   };
+
+  const toggleAll = () => {
+    store.dispatch({ type: 'TOGGLE_ALL'});
+  };
   return (
     <div className='buttons'>
       <button onClick={expandAll}>Expand all</button>
       <button onClick={collapseAll}>Collapse all</button>
-      <button>Toggle all</button>
+      <button onClick={toggleAll}>Toggle all</button>
       <button>Add</button>
     </div>
   );
