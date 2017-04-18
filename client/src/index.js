@@ -13,5 +13,10 @@ const render = () => {
   );
 };
 
+/*
+This works for now since this app is not complicated
+enough to justify the use of react-redux and the use of
+presentational and container components.
+*/
 store.subscribe(render);
 render();
